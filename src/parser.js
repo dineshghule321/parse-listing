@@ -279,6 +279,10 @@ var parsers = {
 
     var time = group[2].replace(/(\d{2}):(\d{2})([AP]M)/, replacer);
     var date = new Date(group[1] + " " + time).getTime();
+    if(Number.isNaN(date))
+    {
+      date = new Date(group[1].split("-").join("/")  + " " + time).getTime();
+    }
     var dirString = group[3];
     var size = group[4];
     var name = group[5];
